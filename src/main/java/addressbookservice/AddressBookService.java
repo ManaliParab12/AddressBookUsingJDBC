@@ -24,7 +24,24 @@ public class AddressBookService {
         return personList;
     }
 
+    public void updateContactNumber(String firstName, String phoneNumber) {
+        int result = addressBookDBService.updateContactNumber(firstName, phoneNumber);
+        if (result == 0) return;
+        Person person = this.getPersonData(firstName);
+        if (person != null) person.phoneNumber = phoneNumber;
+    }
 
+    public boolean checkAddressBookInSyncWithDB(String firstName) {
+        List<Person> personList = addressBookDBService.getPersonData(firstName);
+        return personList.get(0).equals(getPersonData(firstName));
+    }
+
+    private Person getPersonData(String firstName) {
+        return this.personList.stream()
+                .filter(personDataItem -> personDataItem.firstName.equals(firstName))
+                .findFirst()
+                .orElse(null);
+    }
 
 
     public static void main(String[] args){

@@ -1,8 +1,10 @@
 package addressbookservice;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class AddressBookService {
+
     public enum IOService {DB_IO, REST_IO}
 
     private List<Person> personList;
@@ -42,6 +44,13 @@ public class AddressBookService {
                 .findFirst()
                 .orElse(null);
     }
+
+    public List<Person> readAddressBookForDateRange(IOService ioService, LocalDate startDate, LocalDate endDate) {
+        if(ioService.equals(IOService.DB_IO))
+            return addressBookDBService.getAddressBookForDateRange(startDate, endDate);
+        return null;
+    }
+
 
 
     public static void main(String[] args){

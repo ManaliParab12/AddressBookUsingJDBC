@@ -25,7 +25,7 @@ public class AddressBookServiceTest {
     }
 
     @Test
-    public void givenDateRangeWhenRetrieved_ShouldMatchEntryCount() {
+    public void givenDateRangeWhenRetrievedShouldMatchEntryCount() {
         AddressBookService addressBookService = new AddressBookService();
         LocalDate startDate = LocalDate.of(2016, 01, 01);
         LocalDate endDate = LocalDate.now();
@@ -34,4 +34,15 @@ public class AddressBookServiceTest {
                         .IOService.DB_IO, startDate, endDate);
         Assert.assertEquals(3, addressBookDataList.size());
     }
+
+    @Test
+    public void givenState_WhenRetrieved_ShouldMatchEntryCount() {
+        AddressBookService addressBookService = new AddressBookService();
+        List<Person> addressBookDataList =
+                addressBookService.countPeopleFromGivenCity(AddressBookService
+                        .IOService.DB_IO, "Raigad");
+        Assert.assertEquals(1, addressBookDataList.size());
+    }
+
+
 }

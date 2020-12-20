@@ -51,6 +51,12 @@ public class AddressBookService {
         return null;
     }
 
+    public List<Person> countPeopleFromGivenCity(IOService ioService, String city) {
+        return addressBookDBService.countPeopleFromGivenCity(city);
+
+    }
+
+
 
 
     public static void main(String[] args){

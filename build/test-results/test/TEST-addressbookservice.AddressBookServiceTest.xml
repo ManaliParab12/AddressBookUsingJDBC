@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="addressbookservice.AddressBookServiceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-20T14:13:31" hostname="ADMIN-PC" time="3.403">
+  <properties/>
+  <testcase name="givenAddressBookDBWhenRetrivedShouldMatchPersonCount" classname="addressbookservice.AddressBookServiceTest" time="3.403"/>
+  <system-out><![CDATA[Connectinng to database:jdbc:mysql://localhost:3306/addressbook_service?useSSL=false
+Connection is successful!!!com.mysql.jdbc.JDBC4Connection@1767d70
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

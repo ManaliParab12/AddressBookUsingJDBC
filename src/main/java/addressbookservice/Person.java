@@ -13,7 +13,7 @@ public class Person {
     public String emailId;
     public LocalDate startDate;
 
-    public Person(int id, String firstName, String lastName, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
+    public Person(int id, String name, String firstName, String lastName, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

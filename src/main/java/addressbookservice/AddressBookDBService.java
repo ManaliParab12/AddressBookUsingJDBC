@@ -60,7 +60,6 @@ public class AddressBookDBService {
         return personList;
     }
 
-
     private List<Person> getPersonData(ResultSet resultSet) {
         List<Person> personList = new ArrayList<>();
         try {
@@ -85,7 +84,6 @@ public class AddressBookDBService {
 
     public int updateContactNumber(String firstName, String phoneNumber) {
         return this.updateAddressBookDataUsingStatement(firstName, phoneNumber);
-
     }
 
     private int updateAddressBookDataUsingStatement(String firstName, String phoneNumber) {
@@ -99,7 +97,6 @@ public class AddressBookDBService {
         return 0;
     }
 
-
     private void prepareStatementForAddressBookData() {
         try {
             Connection connection = this.getConnection();
@@ -108,7 +105,6 @@ public class AddressBookDBService {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public List<Person> getAddressBookForDateRange(LocalDate startDate, LocalDate endDate) {
@@ -134,5 +130,47 @@ public class AddressBookDBService {
         String sql = String.format("SELECT * FROM Person WHERE city =  '%s';",
                 city);
         return this.getAddressBookDataUsingDB(sql);
+    }
+
+    public Person addPersonToAddressBook(int id, String firstName, String lastName, String address, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
+        Person person = null;
+            String sql = String.format("INSERT INTO Person (id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate) " +
+                    "VALUES ('%d', '%s', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s')", id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate);
+        try (Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+            System.out.println("Record Inserted");
+            person = new Person(id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return person;
+    }
+
+    public Person addPersonToAddressBook1(int id, String firstName, String lastName, String address, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
+        Person person = null;
+        Connection connection = null;
+        try {
+            connection = this.getConnection();
+            connection.setAutoCommit(false);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try (Statement statement = connection.createStatement()){
+        String sql = String.format("INSERT INTO Person (id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate) " +
+                "VALUES ('%d', '%s', '%s', '%s', '%s', '%s', '%d', '%s', '%s', '%s')", id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate);
+            statement.executeUpdate(sql);
+            System.out.println("Record Inserted");
+            person = new Person(id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            connection.rollback();
+        return person;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return person;
     }
 }

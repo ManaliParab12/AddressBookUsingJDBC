@@ -3,7 +3,10 @@ package addressbookservice;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 public class AddressBookServiceTest {
@@ -12,14 +15,14 @@ public class AddressBookServiceTest {
     public void givenAddressBookDBWhenRetrivedShouldMatchPersonCount() {
         AddressBookService addressBookService = new AddressBookService();
         List<Person> addressBookDataList = addressBookService.readAddressBookData(AddressBookService.IOService.DB_IO);
-        Assert.assertEquals(3, addressBookDataList.size());
+        Assert.assertEquals(4, addressBookDataList.size());
     }
 
     @Test
     public void givenContactInformationWhenUpdatedShouldSyncWithDB() {
         AddressBookService addressBookService = new AddressBookService();
         List<Person> addressBookDataList = addressBookService.readAddressBookData(AddressBookService.IOService.DB_IO);
-        addressBookService.updateContactNumber("Manali", "9028363759");
+        addressBookService.updateContactNumber("Manali", "9045363759");
         boolean result = addressBookService.checkAddressBookInSyncWithDB("Manali");
         Assert.assertTrue(result);
     }
@@ -32,11 +35,11 @@ public class AddressBookServiceTest {
         List<Person> addressBookDataList =
                 addressBookService.readAddressBookForDateRange(AddressBookService
                         .IOService.DB_IO, startDate, endDate);
-        Assert.assertEquals(3, addressBookDataList.size());
+        Assert.assertEquals(4, addressBookDataList.size());
     }
 
     @Test
-    public void givenState_WhenRetrieved_ShouldMatchEntryCount() {
+    public void givenCityWhenRetrievedShouldMatchEntryCount() {
         AddressBookService addressBookService = new AddressBookService();
         List<Person> addressBookDataList =
                 addressBookService.countPeopleFromGivenCity(AddressBookService
@@ -44,5 +47,14 @@ public class AddressBookServiceTest {
         Assert.assertEquals(1, addressBookDataList.size());
     }
 
-
+    @Test
+    public void givenNewEntryWhenAddedShouldSyncWithDB() {
+        AddressBookService addressBookService = new AddressBookService();
+        addressBookService.readAddressBookData(AddressBookService.IOService.DB_IO);
+        addressBookService.addPersonToAddressBook(7, "Priya", "Thakur",
+                "MahadevNagar", "Dhule", "Maharashtra",
+                432415, "9822625786", "thakurneha@gmail.com", LocalDate.now());
+        boolean result = addressBookService.checkAddressBookInSyncWithDB("Neha");
+        Assert.assertTrue(result);
+    }
 }

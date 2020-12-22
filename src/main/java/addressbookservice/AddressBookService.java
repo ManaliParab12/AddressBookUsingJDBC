@@ -1,7 +1,9 @@
 package addressbookservice;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AddressBookService {
 
@@ -53,10 +55,11 @@ public class AddressBookService {
 
     public List<Person> countPeopleFromGivenCity(IOService ioService, String city) {
         return addressBookDBService.countPeopleFromGivenCity(city);
-
     }
 
-
+    public void addPersonToAddressBook(int id, String firstName, String lastName, String address, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
+        personList.add(addressBookDBService.addPersonToAddressBook(id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate));
+    }
 
 
     public static void main(String[] args){

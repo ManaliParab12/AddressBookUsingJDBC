@@ -7,6 +7,7 @@ public class Person {
     public int id;
     public String firstName;
     public String lastName;
+    public String address;
     public String city;
     public String state;
     public int zip;
@@ -14,10 +15,11 @@ public class Person {
     public String emailId;
     public LocalDate startDate;
 
-    public Person(int id, String name, String firstName, String lastName, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
+    public Person(int id, String firstName, String lastName, String address, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.address = address;
         this.city = city;
         this.state = state;
         this.zip = zip;

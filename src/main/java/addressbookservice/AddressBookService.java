@@ -61,6 +61,46 @@ public class AddressBookService {
         personList.add(addressBookDBService.addPersonToAddressBook(id, firstName, lastName, address, city, state, zip, phoneNumber, emailId, startDate));
     }
 
+    public void addPersonsToAddressBook(List<Person> personDataList) {
+        personDataList.forEach(person -> {
+            System.out.println("Person Being Added:" +person.firstName);
+            this.addPersonToAddressBook(person.id, person.firstName, person.lastName, person.address, person.city, person.state, person.zip, person.phoneNumber, person.emailId, person.startDate);
+            System.out.println("Person Added:" +person.firstName);
+        });
+        System.out.println(this.personList);
+    }
+
+    public void addPersonsTOAddressBookWithThreads(List<Person> personDataList) {
+        Map<Integer, Boolean> employeeAdditionStatus = new HashMap<Integer, Boolean>();
+        personDataList.forEach(person -> {
+            Runnable task = () -> {
+                employeeAdditionStatus.put(person.hashCode(), false);
+                System.out.println("Employee Being Added:" + Thread.currentThread().getName());
+                this.addPersonToAddressBook(person.id, person.firstName, person.lastName, person.address, person.city, person.state, person.zip, person.phoneNumber, person.emailId, person.startDate);
+                employeeAdditionStatus.put(person.hashCode(), true);
+                System.out.println("Employee Added:" + Thread.currentThread().getName());
+            };
+            Thread thread = new Thread(task, person.firstName);
+            thread.start();
+        });
+        while (employeeAdditionStatus.containsValue(false)) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) { }
+        }
+        System.out.println(this.personList);
+    }
+
+    public boolean checkNameInDatabase(String name) {
+        boolean status = false;
+        for (Person person : personList) {
+            if (person.firstName.equalsIgnoreCase(name)) {
+                status = true;
+            }
+        }
+        return status;
+    }
+
 
     public static void main(String[] args){
         System.out.println("Welcome to Address Book Service Database");

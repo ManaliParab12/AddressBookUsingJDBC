@@ -57,4 +57,26 @@ public class AddressBookServiceTest {
         boolean result = addressBookService.checkAddressBookInSyncWithDB("Neha");
         Assert.assertTrue(result);
     }
+
+    @Test
+    public void given3PersonsWhenAddedTODBShouldMatchPersonEntries() {
+        Person[] arrayOfPerson = {
+                new Person(12,"Prajkta", "Kharat",  "mahadevPrth", "Goregaon", "Maharashtra", 879231, "8932456718", "prajktakharat01@gmail.com", LocalDate.now()),
+                new Person(13,"Jignesh", "Tambade", "SantNagar", "Virar", "Mharashtra", 435276, "7276327108", "jignesht555@gmail.com", LocalDate.now()),
+                new Person(14,"Pratibha", "Thakur", "MahadevNagar","Dhule", "Maharashtra", 432415, "9822625786", "thakurneha@gmail.com", LocalDate.now()),
+        };
+        AddressBookService addressBookService = new AddressBookService();
+        addressBookService.readAddressBookData(AddressBookService.IOService.DB_IO);
+        Instant start = Instant.now();
+        addressBookService.addPersonsToAddressBook(Arrays.asList(arrayOfPerson));
+        Instant end = Instant.now();
+        System.out.println("Duration without Thread :" + Duration.between(start, end));
+        Instant threadStart = Instant.now();
+        addressBookService.addPersonsTOAddressBookWithThreads(Arrays.asList(arrayOfPerson));
+        Instant threadEnd = Instant.now();
+        System.out.println("Duration with Thread :" + Duration.between(threadStart, threadEnd));
+        boolean result = addressBookService.checkNameInDatabase("Pratibha");
+        Assert.assertTrue(result);
+    }
+
 }

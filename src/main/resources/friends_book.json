@@ -31,7 +31,38 @@
         "month": 9,
         "day": 25
       }
+    },
+    {
+      "id": 3,
+      "firstName": "Priya",
+      "lastName": "Labde",
+      "address": "MahadevNagar",
+      "city": "Dhule",
+      "state": "Maharashtra",
+      "zip": 432415,
+      "phoneNumber": "9822625786",
+      "emailId": "thakurneha@gmail.com",
+      "startDate": {
+        "year": 2020,
+        "month": 12,
+        "day": 24
+      }
+    },
+    {
+      "id": 4,
+      "firstName": "Pratibha",
+      "lastName": "Thakur",
+      "address": "MahadevNagar",
+      "city": "Dhule",
+      "state": "Maharashtra",
+      "zip": 432415,
+      "phoneNumber": "9822625786",
+      "emailId": "thakurneha@gmail.com",
+      "startDate": {
+        "year": 2020,
+        "month": 12,
+        "day": 24
+      }
     }
   ]
 }
-

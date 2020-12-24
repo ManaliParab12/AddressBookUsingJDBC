@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbookservice.AddressBookServiceRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-24T11:37:11" hostname="ADMIN-PC" time="36.306">
+<testsuite name="addressbookservice.AddressBookServiceRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-24T12:33:08" hostname="ADMIN-PC" time="94.49">
   <properties/>
-  <testcase name="givenPersonDataInJSONServerWhenRetrivedShouldMatchTheCount" classname="addressbookservice.AddressBookServiceRestTest" time="36.306"/>
+  <testcase name="givenListOfNewPersonsWhenAddedShouldMatchResponse201AndCount" classname="addressbookservice.AddressBookServiceRestTest" time="94.49"/>
   <system-out><![CDATA[PERSON DATA IN JSON Server :
 [
   {

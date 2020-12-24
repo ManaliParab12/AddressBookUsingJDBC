@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="addressbookservice.AddressBookServiceRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-24T11:37:11" hostname="ADMIN-PC" time="36.306">
+  <properties/>
+  <testcase name="givenPersonDataInJSONServerWhenRetrivedShouldMatchTheCount" classname="addressbookservice.AddressBookServiceRestTest" time="36.306"/>
+  <system-out><![CDATA[PERSON DATA IN JSON Server :
+[
+  {
+    "id": 1,
+    "firstName": "Prajkta",
+    "lastName": "Kharat",
+    "address": "mahadevPeth",
+    "city": "Goregaon",
+    "state": "Maharashtra",
+    "zip": 879231,
+    "phoneNumber": "8932456718",
+    "emailId": "prajktakharat01@gmail.com",
+    "startDate": {
+      "year": 2016,
+      "month": 10,
+      "day": 2
+    }
+  },
+  {
+    "id": 2,
+    "firstName": "Jignesh",
+    "lastName": "Tambade",
+    "address": "SantNagar",
+    "city": "Virar",
+    "state": "Maharashtra",
+    "zip": 435276,
+    "phoneNumber": "7276327108",
+    "emailId": "jignesht555@gmail.com",
+    "startDate": {
+      "year": 2012,
+      "month": 9,
+      "day": 25
+    }
+  }
+]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

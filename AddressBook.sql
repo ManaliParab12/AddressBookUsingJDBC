@@ -21,3 +21,57 @@ INSERT INTO Person (id, firstName, lastName, address, city, state, zip, phoneNum
      (3, 'Sayali', 'Patil', 'Tiswadi', 'Panaji', 'Goa', 451236, 8923456712, 'patilsayali@gmail.com', '2018-02-09');
 
 mysql> SELECT * FROM Person;
+
+
+   @Test
+    public void givenNewPersonWhenAddedShouldMatchTheCount(){
+        Person[] arrayOfPersons = getPersonList();
+        AddressBookService addressBookService;
+        addressBookService = new AddressBookService(Arrays.asList(arrayOfPersons));
+        Person person = new Person(3, "Priya", "Thakur",
+                "MahadevNagar", "Dhule", "Maharashtra",
+                432415, "9822625786", "thakurneha@gmail.com", LocalDate.now());
+        Response response = addPersonToJsonServer(person);
+        int statusCode = response.getStatusCode();
+       // Assert.assertEquals(201, statusCode);
+        person = new Gson().fromJson(response.asString(),Person.class);
+        addressBookService.addPersonToAddressBook(person, AddressBookService.IOService.REST_IO);
+        long entries = addressBookService.countEntries(AddressBookService.IOService.REST_IO);
+        Assert.assertEquals(3, entries);
+    }
+
+    //    @Test
+    //    public void givenNewContactNumberForPersonWhenUpdatedShouldMatch(){
+    //        Person[] arrayOfPersons = getPersonList();
+    //        AddressBookService addressBookService;
+    //        addressBookService = new AddressBookService(Arrays.asList(arrayOfPersons));
+    //        addressBookService.updateContactNumber("Jignesh", "9045363759", AddressBookService.IOService.REST_IO);
+    //        Person person = addressBookService.getPersonData("Jignesh");
+    //        String personJson = new Gson().toJson(person);
+    //        RequestSpecification requestSpecification = RestAssured.given();
+    //        requestSpecification.header("Content-Type", "application/jsoon");
+    //        Response response = requestSpecification.put("/friends_book" +person.id);
+    //        int statusCode = response.getStatusCode();
+    //        // Assert.assertEquals(201, statusCode);
+    //        long entries = addressBookService.countEntries(AddressBookService.IOService.REST_IO);
+    //        Assert.assertEquals(3, entries);
+    //    }
+
+
+    @Test
+    public void givenPersonToDeleteWhenDeletedShouldMatchCount(){
+        Person[] arrayOfPersons = getPersonList();
+        AddressBookService addressBookService;
+        addressBookService = new AddressBookService(Arrays.asList(arrayOfPersons));
+
+        Person person = addressBookService.getPersonData("Jignesh");
+        RequestSpecification requestSpecification = RestAssured.given();
+        requestSpecification.header("Content-Type", "application/jsoon");
+        Response response = requestSpecification.put("/friends_book" +person.id);
+        int statusCode = response.getStatusCode();
+        // Assert.assertEquals(201, statusCode);
+        addressBookService.deletePersonFromAddressBook(person, AddressBookService.IOService.REST_IO);
+        long entries = addressBookService.countEntries(AddressBookService.IOService.REST_IO);
+        Assert.assertEquals(2, entries);
+    }
+

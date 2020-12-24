@@ -1,13 +1,14 @@
 package addressbookservice;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AddressBookService {
 
-    public enum IOService {DB_IO, REST_IO}
+    public enum IOService {FILE_IO, DB_IO, REST_IO}
 
     private List<Person> personList;
 
@@ -19,7 +20,7 @@ public class AddressBookService {
 
     public AddressBookService(List<Person> personList) {
         this();
-        this.personList = personList;
+        this.personList = new ArrayList<>(personList);
     }
 
     public List<Person> readAddressBookData(IOService ioService) {
@@ -40,7 +41,7 @@ public class AddressBookService {
         return personList.get(0).equals(getPersonData(firstName));
     }
 
-    private Person getPersonData(String firstName) {
+    Person getPersonData(String firstName) {
         return this.personList.stream()
                 .filter(personDataItem -> personDataItem.firstName.equals(firstName))
                 .findFirst()
@@ -55,6 +56,12 @@ public class AddressBookService {
 
     public List<Person> countPeopleFromGivenCity(IOService ioService, String city) {
         return addressBookDBService.countPeopleFromGivenCity(city);
+    }
+// UC 23
+    public void addPersonToAddressBook(Person person, IOService ioService) {
+        if(ioService.equals(IOService.DB_IO))
+            this.addPersonToAddressBook(person.id, person.firstName, person.lastName, person.address, person.city, person.state, person.zip, person.phoneNumber, person.emailId, person.startDate);
+        else personList.add(person);
     }
 
     public void addPersonToAddressBook(int id, String firstName, String lastName, String address, String city, String state, int zip, String phoneNumber, String emailId, LocalDate startDate) {
@@ -100,6 +107,19 @@ public class AddressBookService {
         }
         return status;
     }
+
+
+    public void deletePersonFromAddressBook(Person person, IOService ioService) {
+
+
+    }
+
+    public long countEntries(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO))
+            return new AddressBookFileIOService().countEntries();
+        return personList.size();
+    }
+
 
 
     public static void main(String[] args){

@@ -1,0 +1,37 @@
+{
+  "Persons": [
+    {
+      "id": 1,
+      "firstName": "Prajkta",
+      "lastName": "Kharat",
+      "address": "mahadevPeth",
+      "city": "Goregaon",
+      "state": "Maharashtra",
+      "zip": 879231,
+      "phoneNumber": "8932456718",
+      "emailId": "prajktakharat01@gmail.com",
+      "startDate": {
+        "year": 2016,
+        "month": 10,
+        "day": 2
+      }
+    },
+    {
+      "id": 2,
+      "firstName": "Jignesh",
+      "lastName": "Tambade",
+      "address": "SantNagar",
+      "city": "Virar",
+      "state": "Maharashtra",
+      "zip": 435276,
+      "phoneNumber": "7276327108",
+      "emailId": "jignesht555@gmail.com",
+      "startDate": {
+        "year": 2012,
+        "month": 9,
+        "day": 25
+      }
+    }
+  ]
+}
+

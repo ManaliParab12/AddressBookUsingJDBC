@@ -118,10 +118,12 @@ public class AddressBookService {
         return status;
     }
 
-
-    public void deletePersonFromAddressBook(Person person, IOService ioService) {
-
-
+    //UC25
+    public void deletePersonFromAddressBook(String firstName, IOService ioService) {
+        if(ioService.equals(IOService.REST_IO)){
+            Person person =this.getPersonData(firstName);
+            personList.remove(person);
+        }
     }
 
     public long countEntries(IOService ioService) {

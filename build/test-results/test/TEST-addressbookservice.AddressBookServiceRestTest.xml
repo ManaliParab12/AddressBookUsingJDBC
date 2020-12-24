@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbookservice.AddressBookServiceRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-24T14:20:59" hostname="ADMIN-PC" time="9.517">
+<testsuite name="addressbookservice.AddressBookServiceRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-24T14:37:57" hostname="ADMIN-PC" time="6.77">
   <properties/>
-  <testcase name="givenNewContactNumberForPersonWhenUpdatedShouldMatch200Response" classname="addressbookservice.AddressBookServiceRestTest" time="9.517"/>
+  <testcase name="givenPersonToDeleteWhenDeletedShouldMatch200ResponseAndCount" classname="addressbookservice.AddressBookServiceRestTest" time="6.77"/>
   <system-out><![CDATA[PERSON DATA IN JSON Server :
 [
   {
@@ -28,7 +28,7 @@
     "city": "Virar",
     "state": "Maharashtra",
     "zip": 435276,
-    "phoneNumber": "7276327108",
+    "phoneNumber": "9045363759",
     "emailId": "jignesht555@gmail.com",
     "startDate": {
       "year": 2012,

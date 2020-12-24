@@ -22,7 +22,7 @@ INSERT INTO Person (id, firstName, lastName, address, city, state, zip, phoneNum
 
 mysql> SELECT * FROM Person;
 
-
+//single person entry
    @Test
     public void givenNewPersonWhenAddedShouldMatchTheCount(){
         Person[] arrayOfPersons = getPersonList();
@@ -40,22 +40,6 @@ mysql> SELECT * FROM Person;
         Assert.assertEquals(3, entries);
     }
 
-    //    @Test
-    //    public void givenNewContactNumberForPersonWhenUpdatedShouldMatch(){
-    //        Person[] arrayOfPersons = getPersonList();
-    //        AddressBookService addressBookService;
-    //        addressBookService = new AddressBookService(Arrays.asList(arrayOfPersons));
-    //        addressBookService.updateContactNumber("Jignesh", "9045363759", AddressBookService.IOService.REST_IO);
-    //        Person person = addressBookService.getPersonData("Jignesh");
-    //        String personJson = new Gson().toJson(person);
-    //        RequestSpecification requestSpecification = RestAssured.given();
-    //        requestSpecification.header("Content-Type", "application/jsoon");
-    //        Response response = requestSpecification.put("/friends_book" +person.id);
-    //        int statusCode = response.getStatusCode();
-    //        // Assert.assertEquals(201, statusCode);
-    //        long entries = addressBookService.countEntries(AddressBookService.IOService.REST_IO);
-    //        Assert.assertEquals(3, entries);
-    //    }
 
 
     @Test

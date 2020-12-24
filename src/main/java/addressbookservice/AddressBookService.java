@@ -29,6 +29,16 @@ public class AddressBookService {
         return personList;
     }
 
+    // UC24
+    public void updateContactNumber(String firstName, String phoneNumber, IOService ioService) {
+        if(ioService.equals(IOService.DB_IO)) {
+            int result = addressBookDBService.updateContactNumber(firstName, phoneNumber);
+            if (result == 0) return;
+        }
+        Person person = this.getPersonData(firstName);
+        if (person != null) person.phoneNumber = phoneNumber;
+    }
+
     public void updateContactNumber(String firstName, String phoneNumber) {
         int result = addressBookDBService.updateContactNumber(firstName, phoneNumber);
         if (result == 0) return;

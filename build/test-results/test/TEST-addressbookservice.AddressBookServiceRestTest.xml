@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbookservice.AddressBookServiceRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-24T12:33:08" hostname="ADMIN-PC" time="94.49">
+<testsuite name="addressbookservice.AddressBookServiceRestTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-24T14:20:59" hostname="ADMIN-PC" time="9.517">
   <properties/>
-  <testcase name="givenListOfNewPersonsWhenAddedShouldMatchResponse201AndCount" classname="addressbookservice.AddressBookServiceRestTest" time="94.49"/>
+  <testcase name="givenNewContactNumberForPersonWhenUpdatedShouldMatch200Response" classname="addressbookservice.AddressBookServiceRestTest" time="9.517"/>
   <system-out><![CDATA[PERSON DATA IN JSON Server :
 [
   {
@@ -34,6 +34,38 @@
       "year": 2012,
       "month": 9,
       "day": 25
+    }
+  },
+  {
+    "id": 3,
+    "firstName": "Priya",
+    "lastName": "Labde",
+    "address": "MahadevNagar",
+    "city": "Dhule",
+    "state": "Maharashtra",
+    "zip": 432415,
+    "phoneNumber": "9822625786",
+    "emailId": "thakurneha@gmail.com",
+    "startDate": {
+      "year": 2020,
+      "month": 12,
+      "day": 24
+    }
+  },
+  {
+    "id": 4,
+    "firstName": "Pratibha",
+    "lastName": "Thakur",
+    "address": "MahadevNagar",
+    "city": "Dhule",
+    "state": "Maharashtra",
+    "zip": 432415,
+    "phoneNumber": "9822625786",
+    "emailId": "thakurneha@gmail.com",
+    "startDate": {
+      "year": 2020,
+      "month": 12,
+      "day": 24
     }
   }
 ]
